@@ -1,6 +1,5 @@
 name: Retrain Model
 
-# Trigger workflow saat push ke branch main
 on:
   push:
     branches:
@@ -11,22 +10,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2. Setup Miniconda
       - name: Setup Miniconda
         uses: conda-incubator/setup-miniconda@v2
         with:
           auto-update-conda: true
+          activate-environment: false
 
-      # 3. Buat environment dari conda.yaml
       - name: Create environment
         run: conda env create -f MLProject/conda.yaml
 
-      # 4. Activate environment dan jalankan MLflow Project
-      - name: Activate environment and run MLflow Project
-        run: |
-          source activate churn_ml
-          mlflow run MLProject
+      - name: Run MLflow Project
+        run: conda run -n churn_ml mlflow run MLProject

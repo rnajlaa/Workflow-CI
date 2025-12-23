@@ -24,25 +24,17 @@ X_train, X_test, y_train, y_test = train_test_split(
 
 print("Train-test split selesai")
 
-# 4. MLflow setup
+# 4. MLflow autolog
 mlflow.set_experiment("Customer Churn Modelling")
+mlflow.sklearn.autolog()
 
-# 5. Train model
-try:
-    model = LogisticRegression(max_iter=1000)
-    model.fit(X_train, y_train)
+# 5. Train model (TANPA start_run)
+model = LogisticRegression(max_iter=1000)
+model.fit(X_train, y_train)
 
-    # 6. Evaluasi
-    y_pred = model.predict(X_test)
-    accuracy = accuracy_score(y_test, y_pred)
+# 6. Evaluasi
+y_pred = model.predict(X_test)
+accuracy = accuracy_score(y_test, y_pred)
 
-    # Log manual (run sudah dimulai oleh mlflow run)
-    mlflow.log_param("model_type", "LogisticRegression")
-    mlflow.log_metric("accuracy", accuracy)
-    mlflow.sklearn.log_model(model, "model")
-
-    print("Training selesai")
-    print("Accuracy:", accuracy)
-except Exception as e:
-    print(f"Error during training: {e}")
-    raise
+print("Training selesai")
+print("Accuracy:", accuracy)

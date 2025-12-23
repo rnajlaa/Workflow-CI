@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
@@ -31,10 +32,18 @@ mlflow.sklearn.autolog()
 # 5. Train model (TANPA start_run)
 model = LogisticRegression(max_iter=1000)
 model.fit(X_train, y_train)
+print("Training selesai")
 
 # 6. Evaluasi
 y_pred = model.predict(X_test)
 accuracy = accuracy_score(y_test, y_pred)
 
-print("Training selesai")
 print("Accuracy:", accuracy)
+
+# 7. Simpan model untuk MLflow Serve
+model_dir = "model"  
+if not os.path.exists(model_dir):
+    os.makedirs(model_dir)
+
+mlflow.sklearn.save_model(model, model_dir)
+print(f"Model tersimpan di folder: {model_dir}")

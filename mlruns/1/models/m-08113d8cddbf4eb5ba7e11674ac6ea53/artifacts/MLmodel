@@ -1,0 +1,36 @@
+artifact_path: file:C:/Users/riska/OneDrive/Dokumen/KULIAH/Semester 7/ASAH - DICODING/Submission/SMSML_Riska-Najla-Nabilah/Membangun_model/mlruns/1/models/m-08113d8cddbf4eb5ba7e11674ac6ea53/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.13.5
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.8.0
+is_signature_from_type_hint: false
+mlflow_version: 3.8.0
+model_id: m-08113d8cddbf4eb5ba7e11674ac6ea53
+model_size_bytes: 1029
+model_uuid: m-08113d8cddbf4eb5ba7e11674ac6ea53
+prompts: null
+run_id: 75e77d7861e044a5aec43b80761f758b
+signature:
+  inputs: '[{"type": "double", "name": "CreditScore", "required": true}, {"type":
+    "long", "name": "Gender", "required": true}, {"type": "double", "name": "Age",
+    "required": true}, {"type": "double", "name": "Tenure", "required": true}, {"type":
+    "double", "name": "Balance", "required": true}, {"type": "double", "name": "NumOfProducts",
+    "required": true}, {"type": "long", "name": "HasCrCard", "required": true}, {"type":
+    "long", "name": "IsActiveMember", "required": true}, {"type": "double", "name":
+    "EstimatedSalary", "required": true}, {"type": "boolean", "name": "Geography_Germany",
+    "required": true}, {"type": "boolean", "name": "Geography_Spain", "required":
+    true}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "int64", "shape": [-1]}}]'
+  params: null
+type_hint_from_example: false
+utc_time_created: '2025-12-22 09:01:17.213697'

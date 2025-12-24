@@ -3,6 +3,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
+import shutil
 
 import mlflow
 import mlflow.sklearn
@@ -42,8 +43,7 @@ print("Accuracy:", accuracy)
 
 # 7. Simpan model untuk MLflow Serve
 model_dir = "model"  
-if not os.path.exists(model_dir):
-    os.makedirs(model_dir)
+if os.path.exists(model_dir):
+    shutil.rmtree(model_dir)
 
 mlflow.sklearn.save_model(model, model_dir)
-print(f"Model tersimpan di folder: {model_dir}")
